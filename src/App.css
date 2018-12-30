@@ -2,31 +2,48 @@
   text-align: center;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.Auth {
+  height: 100vh;
+  background: linear-gradient(to right, #ff70a6, #ff9770, #ffd670, #e9ff70);
   display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  align-items: center;
 }
 
-.App-link {
-  color: #61dafb;
+.login-box {
+  width: 500px;
+  color: #f2f2f2;
+  box-shadow: black;
+  border-radius: 5%;
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+  overflow: auto;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.login-box .logo {
+  font-size: 4rem;
+  margin: 10px;
+}
+
+.login-box .button {
+  background: #403d39;
+  margin: 10px 15px;
+  padding: 5px 10px;
+  border-radius: 5%;
+  cursor: pointer;
+}
+
+.login-box .form {
+  display: flex;
+  justify-content: space-between;
+  width: 250px;
+  margin-bottom: 10px;
+}
+
+.login-box a {
+  display: inline-block;
+  color: inherit;
+  text-decoration: none;
 }
