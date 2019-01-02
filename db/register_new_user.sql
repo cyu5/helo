@@ -1,3 +1,3 @@
 INSERT INTO users (username, password, profile_pic)
 VALUES (${username}, ${password}, ${profile_pic})
-returning *;
+returning username, profile_pic, id;

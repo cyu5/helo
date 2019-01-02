@@ -5,9 +5,8 @@ const massive = require("massive");
 const dotenv = require("dotenv");
 dotenv.config();
 const controller = require("./controller");
-const checkForSession = require('./checkForSession');
+const checkForSession = require("./checkForSession");
 const api = require("../src/api");
-
 
 massive(process.env.CONNECTION_STRING)
   .then(db => {
@@ -20,7 +19,7 @@ massive(process.env.CONNECTION_STRING)
 
 const app = express();
 app.use(bodyParser.json());
-app.use( checkForSession)
+app.use(checkForSession);
 app.use(
   session({
     secret: process.env.SESSION_SECRET,
@@ -33,6 +32,7 @@ app.use(
 );
 
 app.post(api.register, controller.register);
+app.post(api.login, controller.login);
 
 const PORT = 4000;
 app.listen(PORT, () => {

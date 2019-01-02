@@ -1,0 +1,3 @@
+fix reducer action setuser not call
+
+did i match action.type in action creator or reducer

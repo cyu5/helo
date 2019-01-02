@@ -33,7 +33,6 @@ module.exports = {
           // respond with stored user data as comfirmation
           .then(users => {
             res.send(users[0]);
-
           })
 
           // error handling
@@ -41,6 +40,25 @@ module.exports = {
             console.log(`error register`, err);
             res.status(500).send(`Sorry, database is down`);
           });
+      });
+  },
+
+  login(req, res, next) {
+    const { username, password } = req.body;
+    const db = req.app.get("db");
+
+    db.get_user({ username, password })
+      .then(users => {
+        const user = users[0];
+        if (user) {
+          res.send(user);
+        } else {
+          res.send("wrong username and/or password");
+        }
+      })
+      .catch(error => {
+        console.log(`error login`, err);
+        res.status(500).send(`Sorry, database is down`);
       });
   }
 };

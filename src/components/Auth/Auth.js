@@ -2,8 +2,10 @@ import React from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import api from "./../../api";
+import { connect } from "react-redux";
+import { setUser } from "../../ducks/reducer";
 
-export default class Auth extends React.Component {
+class Auth extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -22,7 +24,14 @@ export default class Auth extends React.Component {
     const { username, password } = this.state;
     axios
       .post(api.register, { username, password })
-      .then(res => console.log(res.data));
+      .then(res => this.props.setUser(res.data));
+  };
+
+  loginHandler = () => {
+    const { username, password } = this.state;
+    axios
+      .post(api.login, { username, password })
+      .then(res => this.props.setUser(res.data));
   };
 
   render() {
@@ -68,3 +77,14 @@ export default class Auth extends React.Component {
     );
   }
 }
+
+const mapStateToProps = state => {
+  return {};
+};
+
+const mapDispatchToProps = { setUser };
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Auth);
